@@ -35,7 +35,7 @@ function detectIntent(text) {
 async function callGemini(messages, systemPrompt, keyIndex = 0) {
   const key = GEMINI_KEYS[keyIndex % GEMINI_KEYS.length];
   const genAI = new GoogleGenerativeAI(key);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: systemPrompt });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", systemInstruction: systemPrompt });
   const allMsgs = [...messages];
   const lastMsg = allMsgs.pop();
   const history = allMsgs.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
